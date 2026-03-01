@@ -19,13 +19,13 @@ In practice, electrostatic potential maps are used heavily in molecular dynamics
 There are several algorithms for computing electrostatic potential maps, ranging from approximate grid-based methods to highly accurate particle-mesh techniques. This project focuses on Direct Coulomb Summation (DCS), which is conceptually the most straightforward and physically the most accurate of the common approaches.
 
 The mathematical foundation is simply Coulomb's law. The electrostatic potential $φ_i$ at a point $\vec{r}$ ($x$, $y$, $z$) due to a point charge $q_i$ located at position $\vec{r_i}$ is: 
-$$
+```math
 φ_i(\vec{r}) = \frac{q_i}{|\vec{r} - \vec{r_i}|}
-$$
+```
 When there are N atoms, the total poptential at a grid point $r$ is just the sum of individual contributions:
-$$
+```math
 φ(\vec{r}) = \sum_{i = 0}^{N}{φ_i(\vec{r})} = \sum_{i = 0}^{N}{\frac{q_i}{|\vec{r} - \vec{r_i}|}}
-$$
+```
 
 This must be evaluated at every grid point in a 3D lattice, giving a total operation count proportional to N × M, where M is the number of grid points. For a realistic biological system, a medium-sized protein with 50,000 atoms on a 256×256×256 grid, on a single CPU core this can take hours. This is why DCS is a natural candidate for GPU acceleration.
 
