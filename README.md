@@ -73,7 +73,7 @@ This repository provides a utility library for generating particles and comparin
 #define EPM_IMPLEMENTATION
 #include <epm.h>
 ```
-Look inside to see what is provided.
+Look at the file `usage.cpp` to see how it is used.
 
 ## What You Must Implement
 
